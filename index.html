@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CricxCrate – Star Sports 2HD Live</title>
+<title>CricxCrate – Star Sports 1 English</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
 
 <style>
 *{box-sizing:border-box}
@@ -14,7 +15,6 @@ body{
   color:#111827;
   user-select:none;
 }
-iframe{border:none}
 body.popup-active .main-content > :not(.player-wrap){
   filter:blur(6px);
   pointer-events:none;
@@ -44,14 +44,11 @@ body.popup-active .main-content > :not(.player-wrap){
   position: relative;
   aspect-ratio: 16/9;
 }
-.player-wrap iframe{
-  position: absolute;
-  top: 0;
-  left: 0;
+iframe {
   width: 100%;
   height: 100%;
+  border: none;
 }
-
 .section{
   max-width:950px;
   margin:14px auto;
@@ -79,16 +76,15 @@ body.popup-active .main-content > :not(.player-wrap){
   cursor:pointer;
   text-decoration:none;
   box-shadow:0 6px 14px rgba(0,0,0,.08);
+  transition: transform 0.2s ease;
 }
 .btn.primary{
   background:#00a8e1;
   color:#fff;
   border:none;
 }
-.btn:active,
-.popup-box a:active,
-.popup-box button:active{
-  transform:scale(.96);
+.btn:active{
+  transform:scale(.95);
 }
 .banner{
   max-width:950px;
@@ -157,15 +153,15 @@ body.popup-active .main-content > :not(.player-wrap){
 </div>
 
 <div class="main-content">
-  <div class="top-bar glass">CricxCrate • Star Sports 2HD</div>
+  <div class="top-bar glass">CricxCrate • Star Sports 1 English</div>
 
   <div class="player-wrap">
-    <iframe 
-      src="https://cricketstan.github.io/Channel-14/" 
-      allowfullscreen 
-      allow="autoplay; encrypted-media"
-      sandbox="allow-scripts allow-same-origin allow-forms"
-    ></iframe>
+    <iframe id="video-player"
+            src="https://jiogo.pages.dev/?id=1106" 
+            referrerpolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-presentation" 
+            allow="autoplay; encrypted-media; fullscreen" 
+            allowfullscreen></iframe>
   </div>
 
   <div class="section glass">
@@ -178,6 +174,7 @@ body.popup-active .main-content > :not(.player-wrap){
     <h3>❤️ Share & Support</h3>
     <button class="btn primary" onclick="sharePage()">Share</button>
     <button class="btn" onclick="copyLink()">Copy Link</button>
+    <button class="btn" onclick="refreshPlayer()">Refresh Stream</button>
   </div>
 
   <a href="Https://t.me/+t991_pRD-zs5NzY1" target="_blank" style="text-decoration:none;color:inherit">
@@ -189,8 +186,7 @@ body.popup-active .main-content > :not(.player-wrap){
 </div>
 
 <script>
-fetch("https://dillzycounter.vercel.app/api/hit?key=star-sports-2hd").catch(() => {});
-
+/* UI LOGIC */
 const popup = document.getElementById("popup");
 
 function copyLink(){
@@ -200,8 +196,18 @@ function copyLink(){
 
 function sharePage(){
   if(navigator.share){
-    navigator.share({title:"Star Sports 2HD Live – CricxCrate", url:location.href});
+    navigator.share({
+      title: "Star Sports 1 English Live – CricxCrate", 
+      url: location.href
+    });
   }
+}
+
+function refreshPlayer() {
+  const iframe = document.getElementById('video-player');
+  const currentSrc = iframe.src;
+  iframe.src = '';
+  iframe.src = currentSrc;
 }
 
 function closePopup(){
@@ -209,15 +215,21 @@ function closePopup(){
   setTimeout(()=>{
     popup.style.display="none";
     document.body.classList.remove("popup-active");
-    sessionStorage.setItem("joined","yes");
+    // Using a specific key for English to avoid popup conflicts
+    sessionStorage.setItem("joined_english","yes");
   },300);
 }
 
-if(sessionStorage.getItem("joined")!=="yes"){
+if(sessionStorage.getItem("joined_english") !== "yes"){
   document.body.classList.add("popup-active");
-}else{
-  popup.style.display="none";
+} else {
+  popup.style.display = "none";
 }
+
+/* ANTI-REDIRECT SCRIPT */
+window.onbeforeunload = function() {
+    return null; 
+};
 </script>
 
 </body>
