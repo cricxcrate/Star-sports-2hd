@@ -232,21 +232,22 @@ body {
 </div>
 
 <script>
-// Base64 encoded Video Source updated to ID 1106
-const _0xH1 = "aHR0cHM6Ly9zdXBlcmtpbmdzYXJteS1qaW90dnBsYXllci52ZXJjZWwuYXBwLz9pZD0xMTA2";
+// Updated Source URL
+const streamUrl = "https://star-sports-jt1.pages.dev/ss1eng";
 
 window.onload = function() {
+    // Session check for popup
     if(sessionStorage.getItem("elite_access") === "true") {
         document.getElementById("popup").style.display = "none";
     }
 
-    const src = atob(_0xH1);
     const viewport = document.getElementById('viewport');
 
+    // Inject iframe with new source
     viewport.innerHTML = `
         <iframe 
             id="stream-player"
-            src="${src}" 
+            src="${streamUrl}" 
             allow="autoplay; encrypted-media; fullscreen" 
             allowfullscreen="true" 
             referrerpolicy="no-referrer">
