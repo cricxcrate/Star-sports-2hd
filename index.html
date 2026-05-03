@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CricxCrate | Star Sports 1</title>
+<title>CricxCrate | Star Sports 2HD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -84,20 +84,11 @@ body {
 .channel-info {
   background: var(--card-bg);
   border-radius: 20px;
-  padding: 16px;
+  padding: 18px 22px;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  gap: 4px;
   margin-bottom: 24px;
-  border: 1px solid var(--border);
-}
-
-.channel-logo-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: #1a1a1a;
   border: 1px solid var(--border);
 }
 
@@ -206,11 +197,8 @@ body {
   </div>
 
   <div class="channel-info">
-    <img src="https://img.media.jio.com/tvpimages/5/6/Star_Sports_1_English_l_medium.jpg" alt="Star Sports 1" class="channel-logo-img">
-    <div>
-      <h3 style="margin:0; font-size:16px; font-weight: 700;">Star Sports 1</h3>
-      <p style="margin:4px 0 0; font-size:12px; color:var(--cascade);">Sports • English/Hindi</p>
-    </div>
+    <h3 style="margin:0; font-size:18px; font-weight: 700;">Star Sports 2HD</h3>
+    <p style="margin:0; font-size:13px; color:var(--cascade);">Sports • HD English</p>
   </div>
 
   <div class="digg-panel">
@@ -232,18 +220,16 @@ body {
 </div>
 
 <script>
-// Updated Source URL
-const streamUrl = "https://star-sports-jt1.pages.dev/ss1eng";
+// Updated Stream URL for Star Sports 2
+const streamUrl = "https://binge-giotv.pages.dev/player2?id=ss2";
 
 window.onload = function() {
-    // Session check for popup
     if(sessionStorage.getItem("elite_access") === "true") {
         document.getElementById("popup").style.display = "none";
     }
 
     const viewport = document.getElementById('viewport');
 
-    // Inject iframe with new source
     viewport.innerHTML = `
         <iframe 
             id="stream-player"
@@ -273,7 +259,6 @@ function sharePage() {
   }
 }
 
-// Basic Anti-Inspect Logic
 document.onkeydown = (e) => {
     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
 };
